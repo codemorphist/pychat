@@ -1,22 +1,24 @@
 import socket
+import select
+import sys
 from config import HOST, PORT
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    s.send(''.encode())
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.connect((HOST, PORT))
 
-    while True:
-        message = ''
-        message = input('YOU: ')
+while True:
+    sockets_list = [sys.stdin, server]
 
-        if message == 'exit':
-            break
+    read_sockets,write_socket, error_socket = select.select(sockets_list,[],[])
 
-        s.sendall(message.encode())
-
-        data = s.recv(1024)
-
-        if data:
-            print('SERVER: ', data.decode())
-
-    s.close()
+    for socks in read_sockets:
+        if socks == server:
+            message = socks.recv(2048)
+            print(message.decode())
+        else:
+            message = sys.stdin.readline()
+            server.send(message.encode())
+            sys.stdout.write('[You]')
+            sys.stdout.write(message)
+            sys.stdout.flush()
+server.close()
