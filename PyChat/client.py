@@ -8,7 +8,7 @@ class Client():
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.connect((HOST, PORT))
 
-    def send_message(self, message)
+    def send_message(self, message):
         # while True:
         #     sockets_list = [sys.stdin, server]
 
