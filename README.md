@@ -6,7 +6,7 @@ Pychat it is simple chat written on python, with socket lib
 # How to run
 
 1. Config and run server from `PyChat`
-2. Config and run app form `tkinter`
+2. Config and run app from `tkinter`
 3. Enjoy!
 
 # Config explanation
