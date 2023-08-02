@@ -1,7 +1,7 @@
 # PyChat
 
 Pychat it is simple chat written on python, with socket lib
-![TK GUI]("../images/screenshot_1.jpg" "Tkinter image of GUI")
+![TK GUI](./images/screenshot_1.jpg "Tkinter image of GUI")
 
 # How to run
 
